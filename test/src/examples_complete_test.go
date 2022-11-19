@@ -17,6 +17,7 @@ func cleanup(t *testing.T, terraformOptions *terraform.Options, tempTestFolder s
 // Test the Terraform module in examples/complete using Terratest.
 func TestExamplesComplete(t *testing.T) {
 	tests := []struct {
+		skip                     bool
 		name                     string
 		vars                     map[string]interface{}
 		expectedName             string
@@ -81,12 +82,31 @@ func TestExamplesComplete(t *testing.T) {
 			expectedContextName:      "kind-cl22-dev-test",
 			expectedLoadbalancerName: "cl22-dev-test-external-load-balancer",
 		},
+		{
+			skip: true,
+			name: "networking_one_controller_zero_worker",
+			vars: map[string]interface{}{
+				"enabled":     true,
+				"namespace":   "cl22",
+				"environment": "dev",
+				"stage":       "test",
+				"networking": map[string]interface{}{
+					"ip_family": "ipv6",
+				},
+			},
+			expectedName:             "cl22-dev-test",
+			expectedContextName:      "kind-cl22-dev-test",
+			expectedLoadbalancerName: "cl22-dev-test-external-load-balancer",
+		},
 	}
 
 	rootFolder := "../../"
 	terraformFolderRelativeToRoot := "examples/complete"
 
 	for _, tt := range tests {
+		if tt.skip {
+			continue
+		}
 		t.Run(tt.name, func(t *testing.T) {
 			test := tt
 			t.Parallel()

@@ -5,5 +5,7 @@ module "kind_cluster" {
 
   nodes = var.nodes
 
+  networking = var.networking
+
   context = module.this.context
 }

@@ -3,11 +3,11 @@ locals {
   enabled      = module.this.enabled
   cluster_name = module.this.id
 
-  controller_node_count = length(var.nodes) == 0? 1 : length([for each in var.nodes : each if each.role == "control-plane"])
+  controller_node_count = length(var.nodes) == 0 ? 1 : length([for each in var.nodes : each if each.role == "control-plane"])
 
   loadbalancer_container_name_suffix = local.controller_node_count == 1 ? "control-plane" : "external-load-balancer"
 
-  loadbalancer_container_name =  format("%s-%s", local.cluster_name, local.loadbalancer_container_name_suffix)
+  loadbalancer_container_name = format("%s-%s", local.cluster_name, local.loadbalancer_container_name_suffix)
 }
 
 resource "kind_cluster" "default" {
@@ -15,13 +15,27 @@ resource "kind_cluster" "default" {
   name  = local.cluster_name
 
   kind_config {
-    kind = "Cluster"
+    kind        = "Cluster"
     api_version = "kind.x-k8s.io/v1alpha4"
+
+    dynamic "networking" {
+      for_each = var.networking == null ? [] : [var.networking]
+      content {
+        ip_family           = networking.value.ip_family
+        api_server_address  = networking.value.api_server_address
+        api_server_port     = networking.value.api_server_port
+        pod_subnet          = networking.value.pod_subnet
+        service_subnet      = networking.value.service_subnet
+        disable_default_cni = networking.value.disable_default_cni
+        kube_proxy_mode     = networking.value.kube_proxy_mode
+      }
+    }
 
     dynamic "node" {
       for_each = var.nodes
       content {
-        role = node.value.role
+        role  = node.value.role
+        image = node.value.image
       }
     }
   }
