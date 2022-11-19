@@ -12,5 +12,7 @@
 **/.idea
 **/*.iml
 
+test.log
+
 **/.build-harness
 **/build-harness
