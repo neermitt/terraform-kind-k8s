@@ -113,6 +113,7 @@ Available targets:
 | <a name="input_labels_as_tags"></a> [labels\_as\_tags](#input\_labels\_as\_tags) | Set of labels (ID elements) to include as tags in the `tags` output.<br>Default is to include all labels.<br>Tags with empty values will not be included in the `tags` output.<br>Set to `[]` to suppress all generated tags.<br>**Notes:**<br>  The value of the `name` tag, if included, will be the `id`, not the `name`.<br>  Unlike other `null-label` inputs, the initial setting of `labels_as_tags` cannot be<br>  changed in later chained modules. Attempts to change it will be silently ignored. | `set(string)` | <pre>[<br>  "default"<br>]</pre> | no |
 | <a name="input_name"></a> [name](#input\_name) | ID element. Usually the component or solution name, e.g. 'app' or 'jenkins'.<br>This is the only ID element not also included as a `tag`.<br>The "name" tag is set to the full `id` string. There is no tag with the value of the `name` input. | `string` | `null` | no |
 | <a name="input_namespace"></a> [namespace](#input\_namespace) | ID element. Usually an abbreviation of your organization name, e.g. 'eg' or 'cp', to help ensure generated IDs are globally unique | `string` | `null` | no |
+| <a name="input_nodes"></a> [nodes](#input\_nodes) | values for the kind\_config node block | <pre>list(<br>        object({<br>            role = string<br>        })<br>    )</pre> | `[]` | no |
 | <a name="input_regex_replace_chars"></a> [regex\_replace\_chars](#input\_regex\_replace\_chars) | Terraform regular expression (regex) string.<br>Characters matching the regex will be removed from the ID elements.<br>If not set, `"/[^a-zA-Z0-9-]/"` is used to remove all characters other than hyphens, letters and digits. | `string` | `null` | no |
 | <a name="input_stage"></a> [stage](#input\_stage) | ID element. Usually used to indicate role, e.g. 'prod', 'staging', 'source', 'build', 'test', 'deploy', 'release' | `string` | `null` | no |
 | <a name="input_tags"></a> [tags](#input\_tags) | Additional tags (e.g. `{'BusinessUnit': 'XYZ'}`).<br>Neither the tag keys nor the tag values will be modified by this module. | `map(string)` | `{}` | no |
@@ -123,10 +124,10 @@ Available targets:
 | Name | Description |
 |------|-------------|
 | <a name="output_context_name"></a> [context\_name](#output\_context\_name) | context name for the kind cluster in kube\_config file |
-| <a name="output_controller_container_name"></a> [controller\_container\_name](#output\_controller\_container\_name) | controler container name for the kind cluster |
 | <a name="output_ipAddress"></a> [ipAddress](#output\_ipAddress) | the IP address of the kind\_cluster controller node |
 | <a name="output_kubeconfig"></a> [kubeconfig](#output\_kubeconfig) | the kubeconfig of the kind\_cluster |
 | <a name="output_kubeconfig_with_ip"></a> [kubeconfig\_with\_ip](#output\_kubeconfig\_with\_ip) | the kubeconfig of the kind\_cluster with the IP address of the controller node |
+| <a name="output_loadbalancer_container_name"></a> [loadbalancer\_container\_name](#output\_loadbalancer\_container\_name) | loadbalancer container name for the kind cluster |
 | <a name="output_name"></a> [name](#output\_name) | the name of the kind\_cluster |
 <!-- markdownlint-restore -->
 

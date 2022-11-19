@@ -23,7 +23,7 @@ output "context_name" {
   description = "context name for the kind cluster in kube_config file"
 }
 
-output "controller_container_name" {
-  value       = module.kind_cluster.controller_container_name
-  description = "controler container name for the kind cluster"
+output "loadbalancer_container_name" {
+  value       = module.kind_cluster.loadbalancer_container_name
+  description = "loadbalancer container name for the kind cluster"
 }
