@@ -1,0 +1,27 @@
+{
+    "name": "terraform-kind",
+    "image": "mcr.microsoft.com/vscode/devcontainers/go:1.19-bullseye",
+    "features": {
+		"ghcr.io/devcontainers/features/common-utils:1": {
+            "upgradePackages": "false"
+        },
+        "ghcr.io/devcontainers/features/docker-in-docker:1": {
+            "version": "20.10"
+        },
+        "ghcr.io/devcontainers/features/kubectl-helm-minikube:1": {
+            "version": "1.25",
+            "helm": "latest",
+            "minikube": "none"
+        },
+		"ghcr.io/neermitt/devcontainers-features/kind:1": {
+            "version": "0.16.0"
+        }
+	},
+	"extensions": [
+		"EditorConfig.EditorConfig",
+		"ms-vscode.makefile-tools",
+        "hashicorp.terraform",
+        "ms-vscode.makefile-tools"
+	],
+	"remoteUser": "vscode"
+}

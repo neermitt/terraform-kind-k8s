@@ -1,0 +1,23 @@
+name: terraform-kind-k8s
+tags:
+- kind
+- terraform
+- terraform-modules
+categories:
+- terraform-modules/supported
+license: APACHE2
+github_repo: neermitt/terraform-kind-k8s
+badges:
+- name: Latest Release
+  image: https://img.shields.io/github/release/neermitt/terraform-kind-k8s.svg
+  url: https://github.com/neermitt/terraform-kind-k8s/releases/latest
+description: |-
+  Terraform module to create kind cluster. Use `terraform-kind-k8s` to create k8s cluster.
+usage: |-
+  <Usage goed here>
+include:
+- docs/targets.md
+- docs/terraform.md
+contributors:
+- name: Neeraj Mittal
+  github: neermitt
