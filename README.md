@@ -55,7 +55,11 @@ Available targets:
   help                                Help screen
   help/all                            Display help for all targets
   help/short                          This help short screen
+  install                             Install dependencies
   lint                                Lint terraform code
+  test                                Run all tests against terraform module
+  test/bats                           Run bats tests against terraform module
+  test/unit                           Run unit tests against terraform module
 
 ```
 <!-- markdownlint-restore -->
@@ -81,13 +85,13 @@ Available targets:
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_this"></a> [this](#module\_this) | ../.. | n/a |
+| <a name="module_this"></a> [this](#module\_this) | cloudposse/label/null | 0.25.0 |
 
 ## Resources
 
 | Name | Type |
 |------|------|
-| [kind_cluster.default](https://registry.terraform.io/providers/techyx/kind/latest/docs/resources/cluster) | resource |
+| [kind_cluster.default](https://registry.terraform.io/providers/tehcyx/kind/latest/docs/resources/cluster) | resource |
 | [docker-utils_inspect.default](https://registry.terraform.io/providers/Kaginari/docker-utils/latest/docs/data-sources/inspect) | data source |
 | [utils_deep_merge_yaml.default](https://registry.terraform.io/providers/cloudposse/utils/latest/docs/data-sources/deep_merge_yaml) | data source |
 
@@ -118,6 +122,8 @@ Available targets:
 
 | Name | Description |
 |------|-------------|
+| <a name="output_context_name"></a> [context\_name](#output\_context\_name) | context name for the kind cluster in kube\_config file |
+| <a name="output_controller_container_name"></a> [controller\_container\_name](#output\_controller\_container\_name) | controler container name for the kind cluster |
 | <a name="output_ipAddress"></a> [ipAddress](#output\_ipAddress) | the IP address of the kind\_cluster controller node |
 | <a name="output_kubeconfig"></a> [kubeconfig](#output\_kubeconfig) | the kubeconfig of the kind\_cluster |
 | <a name="output_kubeconfig_with_ip"></a> [kubeconfig\_with\_ip](#output\_kubeconfig\_with\_ip) | the kubeconfig of the kind\_cluster with the IP address of the controller node |

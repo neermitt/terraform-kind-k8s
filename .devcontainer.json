@@ -13,8 +13,14 @@
             "helm": "latest",
             "minikube": "none"
         },
+        "ghcr.io/devcontainers/features/terraform:1": {
+            "version": "1.2"
+        },
 		"ghcr.io/neermitt/devcontainers-features/kind:1": {
             "version": "0.16.0"
+        },
+        "ghcr.io/neermitt/devcontainers-features/bats:1": {
+            "version": "1.8.2"
         }
 	},
 	"extensions": [
