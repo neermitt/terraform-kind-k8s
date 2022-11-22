@@ -14,7 +14,7 @@ output "ipAddress" {
 }
 
 output "kubeconfig_with_ip" {
-  value       = data.utils_deep_merge_yaml.default[0].output
+  value       = join("", data.utils_deep_merge_yaml.default.*.output)
   description = "the kubeconfig of the kind_cluster with the IP address of the controller node"
 }
 

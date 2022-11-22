@@ -22,3 +22,16 @@ variable "networking" {
   default     = null
   description = "Multiple details of the cluster's networking can be customized under the networking field. See https://kind.sigs.k8s.io/docs/user/configuration/#networking"
 }
+
+variable "kubeconfig_path" {
+  type    = string
+  default = null
+
+  description = "file path, where kubeconfig should be stored, directory path should be provided as alternative"
+}
+
+variable "kubeconfig_base_path" {
+  type        = string
+  default     = null
+  description = "directory, where kubeconfig should be generated, kubeconfig will have <cluster-name>.config pattern"
+}

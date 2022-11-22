@@ -3,6 +3,8 @@ locals {
   enabled      = module.this.enabled
   cluster_name = module.this.id
 
+  kubeconfig_path = var.kubeconfig_path != null ? var.kubeconfig_path : format("%s/%s.config", var.kubeconfig_base_path, local.cluster_name)
+
   controller_node_count = length(var.nodes) == 0 ? 1 : length([for each in var.nodes : each if each.role == "control-plane"])
 
   loadbalancer_container_name_suffix = local.controller_node_count == 1 ? "control-plane" : "external-load-balancer"
@@ -39,6 +41,8 @@ resource "kind_cluster" "default" {
       }
     }
   }
+
+  kubeconfig_path = local.kubeconfig_path
 
   wait_for_ready = true
 }

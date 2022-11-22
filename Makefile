@@ -1,5 +1,7 @@
 SHELL := /bin/bash
 
+.DEFAULT_GOAL := help/short
+
 README_TEMPLATE_FILE=./templates/README.md.gotmpl
 
 # List of targets the `readme` target should call before generating the readme

@@ -21,7 +21,10 @@
         },
         "ghcr.io/neermitt/devcontainers-features/bats:1": {
             "version": "1.8.2"
-        }
+        },
+        "ghcr.io/neermitt/devcontainers-features/terraform-config-inspect:1": {
+            "version": "0.1.0"
+        },
 	},
 	"extensions": [
 		"EditorConfig.EditorConfig",
